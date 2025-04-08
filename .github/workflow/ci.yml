@@ -30,6 +30,7 @@ jobs:
             docker stop helloworld || true
             docker rm helloworld || true
             git pull
-            sudo docker build -t helloworld:ubuntu .
-            sudo docker run --name=helloworld helloworld:ubuntu
+            docker rmi $(docker images -aq)
+            docker build -t helloworld:ubuntu .
+            docker run --name=helloworld helloworld:ubuntu
           EOF
