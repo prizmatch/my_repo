@@ -25,8 +25,8 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" &gt; private_key
           chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key user@your_vm_ip &lt;&lt; 'EOF'
-            cd /my_repo
+          ssh -o StrictHostKeyChecking=no -i private_key superuser@192.168.210.148 &lt;&lt; 'EOF'
+            cd ~/my_repo
             sudo docker stop helloworld:ubuntu || true
             sudo docker rm helloworld:ubuntu || true
             git pull origin master
