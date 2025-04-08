@@ -20,13 +20,13 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: | 
-          echo "$SSH_PRIVATE_KEY" &gt; private_key
-      #    chmod 600 private_key
-      #    ssh -o StrictHostKeyChecking=no -i private_key superuser@192.168.210.148 &lt;&lt; 'EOF'
-      #      cd ~/my_repo
-      #      docker stop helloworld || true
-      #      docker rm helloworld || true
-      #      git pull
-      #      docker build -t helloworld:ubuntu .
-      #      docker run --name helloworld helloworld:ubuntu
-      #    EOF
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key superuser@192.168.210.148 &lt;&lt; 'EOF'
+            cd ~/my_repo
+            docker stop helloworld || true
+            docker rm helloworld || true
+            git pull
+            docker build -t helloworld:ubuntu .
+            docker run --name helloworld helloworld:ubuntu
+          EOF
